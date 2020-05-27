@@ -62,12 +62,12 @@ class CompleteHTTPRequestHandler(SimpleHTTPRequestHandler):
         self.end_headers()
 
     def do_GET(self):
-        self._set_headers()
         url = urlparse(self.path)
         path = url.path
         query = dict(parse_qsl(url.query))
 
         if self.app.is_rule(path):
+            self._set_headers()
             output = bytes(str(self.app._exec_rule(path, 'GET', query)), 'utf-8')
             self.wfile.write(output)
         else:
