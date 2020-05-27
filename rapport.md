@@ -207,11 +207,11 @@ Enfin, nous avons une méthode utilitaire `run()` qui nous permet de lancer le s
 
 ## 3 - Interrogation des données
 
-On utilise bibliotheque pandas afin de faciliter la manipulation et l'analyse des données.l'implementation d'un Dataframe contenant les données permet de faire les traitement nécessaire afin de renvoyer le résultat attendu au client.
+On utilise la bibliotheque pandas afin de faciliter la manipulation et l'analyse des données. L'implementation d'un Dataframe contenant les données permet de faire les traitement nécessaire afin de renvoyer le résultat attendu au client.
 
 ## 4 - Client asynchrone
 
-Le client asynchrone joue le role de passerelle entre le serveur traitant les requetes que le client envoie et le client recevant les reponses du serveur.le transfert d'informations se fera sous form de requetes `Http`.  
+Le client asynchrone joue le role de passerelle entre le serveur traitant les requetes que le client envoie et le client recevant les reponses du serveur. Le transfert d'informations se fera sous form de requetes `Http`.  
 La fonction `Client.ajax` envoie une requete `Http` et encapsule le retour sous forme d'un objet `Promise` qui lui se résout et renvoie le résultat dés qu'il reçoit la réponse.  
 ```javascript=
 Promise ((resolve, reject) => {
@@ -230,7 +230,7 @@ Promise ((resolve, reject) => {
         xhr.send();
     })
 ```
-`Serve.py` reçoit la requete `http(methode,url)` qui traduirat en `regle,parametre` c'est ce qui va permetre de lancer le traitement spécifique.Par exemple le client veut recevoir(GET) `Traitement1(p1,p2)`=>
+`CompleteHTTPServer` reçoit la requete `http(methode,url)` qui traduirat en `regle,parametre` c'est ce qui va permetre de lancer le traitement spécifique. Par exemple le client veut recevoir (GET) `Traitement1(p1,p2)`=>
 la requete `Http` correspondante:
 ```javascript=
 let url = "http://127.0.0.1:8080/Traitement1?p1=value1&p2=value2
@@ -252,15 +252,12 @@ def search(p1,p2): //p1==value1 & p2==value2s
     tmp=df.loc[df['text'].str.contains(p)]
     print(p)
 ```
-On sait baser sur deux principe dans cette partie,l'asynchonisation des requetes ajax pour faire des traitements parallèles,et la synchonisation du retour serveur à l'aide des promesses.
-
-
-
+On sait baser sur deux principe dans cette partie, l'asynchonisation des requetes ajax pour faire des traitements parallèles,et la synchonisation du retour serveur à l'aide des promesses.  
 
 ## 5 - Présentation
-`html,css,javascript` ont été utilisés pour l'affichage des graphes et des pages.
+`html`,`css`,`javascript` ont été utilisés pour l'affichage des graphes et des pages.
 Pour pouvoir déssiner les graphes qu'on veut afficher on a utilisé l'element `html` padas afin de faire des déssins dynamiques manipulier les dimentions des histogramme par exemlple.
-Voici un exemple d'un histogramme pour la recherches des tweets contenant un "yes".
+Voici un exemple d'un histogramme pour la recherches des tweets contenant le mot clé "yes".
 
 
 ![](https://i.imgur.com/9FQko0i.png)
